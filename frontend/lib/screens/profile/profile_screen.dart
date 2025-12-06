@@ -18,7 +18,6 @@ class ProfileScreen extends StatelessWidget {
         headerSliverBuilder: (context, inner) {
           return [
             SliverAppBar(
-              backgroundColor: Colors.white,
               centerTitle: true,
               floating: true,
               snap: true,
@@ -103,11 +102,11 @@ class ProfileScreen extends StatelessWidget {
                           width: boxSize * 1.2,
                           height: boxSize * 1.2,
                           decoration: BoxDecoration(
+                            shape: BoxShape.circle,
                             image: DecorationImage(
                               image: AssetImage("assets/images/profile.jpg"),
                               fit: BoxFit.cover,
                             ),
-                            borderRadius: BorderRadius.circular(100),
                             border: Border.all(
                               color: const Color.fromARGB(255, 62, 62, 62),
                               width: 1.5,
@@ -242,26 +241,28 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.person_outline,
-                              size: 30,
-                              color: Colors.black,
-                            ),
-                            SizedBox(width: 10),
-                            Text(
-                              "Kişisel Bilgiler",
-                              style: TextStyle(
-                                fontSize: 20,
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.person_outline,
+                                size: 30,
                                 color: Colors.black,
                               ),
                             ),
-                            SizedBox(width: 10),
-                            Icon(
-                              Icons.keyboard_arrow_right,
-                              size: 30,
-                              color: Colors.black,
+                            Expanded(
+                              child: Text(
+                                "Kişisel Bilgiler",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -284,6 +285,32 @@ class ProfileScreen extends StatelessWidget {
                             width: borderSize,
                           ),
                         ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.call_outlined,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "İletişim Bilgileri",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -302,6 +329,32 @@ class ProfileScreen extends StatelessWidget {
                             color: borderPalette,
                             width: borderSize,
                           ),
+                        ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.healing_outlined,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Sağlık Profili",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -322,6 +375,32 @@ class ProfileScreen extends StatelessWidget {
                             width: borderSize,
                           ),
                         ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.security_outlined,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Hesap ve Güvenlik",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -340,6 +419,32 @@ class ProfileScreen extends StatelessWidget {
                             color: borderPalette,
                             width: borderSize,
                           ),
+                        ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.share_outlined,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Veri Paylaşımı ve İzinler",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -360,6 +465,32 @@ class ProfileScreen extends StatelessWidget {
                             width: borderSize,
                           ),
                         ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.devices_outlined,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Cihazlarım",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -378,6 +509,32 @@ class ProfileScreen extends StatelessWidget {
                             color: borderPalette,
                             width: borderSize,
                           ),
+                        ),
+                        child: const Row(
+                          children: [
+                            SizedBox(
+                              width: 60,
+                              child: Icon(
+                                Icons.help_outline,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Expanded(
+                              child: Text(
+                                "Destek ve Yardım",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 40,
+                              child: Icon(
+                                Icons.keyboard_arrow_right,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
