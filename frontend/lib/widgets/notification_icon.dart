@@ -41,11 +41,15 @@ class _NotificationIconState extends State<NotificationIcon> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: const Color.fromARGB(255, 240, 240, 240),
               borderRadius: BorderRadius.circular(6),
+              border: Border.all(
+                color: const Color.fromARGB(255, 175, 175, 175),
+                width: 1,
+              ),
             ),
             child: const Icon(
-              Icons.notifications,
+              Icons.notifications_outlined,
               size: 28,
               color: Colors.black,
             ),

@@ -7,23 +7,54 @@ class AnalystScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Padding(
-          padding: EdgeInsets.only(top: 20),
-          child: Text(
-            "Analiz",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, inner) {
+          return [
+            SliverAppBar(
+              centerTitle: true,
+              floating: true,
+              snap: true,
+              elevation: 2,
+              title: const Padding(
+                padding: EdgeInsets.only(top: 15.0),
+                child: Text(
+                  "Analiz",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              actions: const [
+                Padding(
+                  padding: EdgeInsets.only(right: 16.0, top: 15.0),
+                  child: NotificationIcon(),
+                ),
+              ],
+            ),
+          ];
+        },
+
+        body: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 15),
+              child: Column(
+                children: [
+                  Text(
+                    "Analiz Sayfası",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: const Color.fromARGB(255, 50, 50, 50),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 16.0, top: 20),
-            child: NotificationIcon(),
-          ),
-        ],
       ),
-      body: const Center(child: Text("Analiz Sayfası")),
     );
   }
 }
