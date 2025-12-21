@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../analyst/analyst_screen.dart'; 
+import '../analyst/analyst_screen.dart';
 
 class TakeScreen extends StatelessWidget {
   const TakeScreen({super.key});
@@ -10,9 +10,8 @@ class TakeScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          // Arka plan resmi
           Opacity(
-            opacity: 0.15, 
+            opacity: 0.15,
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -24,7 +23,6 @@ class TakeScreen extends StatelessWidget {
               ),
             ),
           ),
-          // İçerik
           const Center(
             child: Text(
               "Ölçüm Yapılıyor",
@@ -36,20 +34,18 @@ class TakeScreen extends StatelessWidget {
                     offset: Offset(1, 1),
                     blurRadius: 3,
                     color: Colors.black26,
-                  )
+                  ),
                 ],
               ),
             ),
           ),
-          // Alt kısımdaki Tamam butonu
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 30.0),
               child: ElevatedButton(
                 onPressed: () {
-                  // Analiz sayfasına git
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const AnalystScreen(),
@@ -57,11 +53,11 @@ class TakeScreen extends StatelessWidget {
                   );
                 },
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
-                  child: Text(
-                    "Tamam",
-                    style: TextStyle(fontSize: 20),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 12.0,
                   ),
+                  child: Text("Tamam", style: TextStyle(fontSize: 20)),
                 ),
               ),
             ),

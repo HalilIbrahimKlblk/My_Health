@@ -22,5 +22,6 @@ flutter:
   assets:
     - assets/images/health_bg.png
     - assets/images/profile.jpg
+    - assets/images/chart.png
 
    

@@ -12,8 +12,9 @@ class AnalystScreen extends StatelessWidget {
           return [
             SliverAppBar(
               centerTitle: true,
-              floating: true,
-              snap: true,
+              floating: false,
+              snap: false,
+              pinned: false,
               elevation: 2,
               title: const Padding(
                 padding: EdgeInsets.only(top: 15.0),
@@ -36,23 +37,19 @@ class AnalystScreen extends StatelessWidget {
           ];
         },
 
-        body: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20, bottom: 15),
-              child: Column(
-                children: [
-                  Text(
-                    "Analiz Sayfası",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: const Color.fromARGB(255, 50, 50, 50),
-                    ),
-                  ),
-                ],
+        body: ListView(
+          padding: const EdgeInsets.only(top: 20, bottom: 15),
+          children: [
+            Center(
+              child: Text(
+                "Analiz Sayfası",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 50, 50, 50),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
