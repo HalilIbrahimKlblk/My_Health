@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/routes/app_routes.dart';
-import '../main_page.dart'; // MainPage import ETMEYİ UNUTMA!
+import '../main_page.dart'; 
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

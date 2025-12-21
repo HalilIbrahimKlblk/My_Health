@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_health/screens/analyst/analyst_screen.dart';
-import 'package:my_health/screens/take/take_screen.dart';
+import 'package:my_health/screens/measure/measure_screen.dart';
 import '../../widgets/bottom_navbar.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/medicine/medicine_screen.dart';
@@ -19,7 +19,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _pages = const [
     HomeScreen(),
     MedicineScreen(),
-    TakeScreen(),
+    MeasureScreen(),
     AnalystScreen(),
     ProfileScreen(),
   ];
