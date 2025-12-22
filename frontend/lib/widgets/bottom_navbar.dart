@@ -22,10 +22,7 @@ class BottomNavbar extends StatelessWidget {
           icon: Icon(Icons.medical_services),
           label: "İlaçlarım",
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.monitor_heart),
-          label: "Ölçüm Yap",
-        ),
+        BottomNavigationBarItem(icon: Icon(Icons.speed), label: "Ölçüm"),
         BottomNavigationBarItem(icon: Icon(Icons.analytics), label: "Analiz"),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: "Hesabım"),
       ],

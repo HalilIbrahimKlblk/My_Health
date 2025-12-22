@@ -12,12 +12,10 @@ class LogonScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text("Logon Sayfası"),
-
             const SizedBox(height: 20),
-
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);   // Login’e geri döner
+                Navigator.pop(context);   
               },
               child: const Text("Kayıt Ol ve Geri Dön"),
             ),

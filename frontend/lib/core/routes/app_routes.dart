@@ -6,6 +6,7 @@ import '../../screens/profile/profile_screen.dart';
 import '../../screens/medicine/medicine_screen.dart';
 import '../../screens/analyst/analyst_screen.dart';
 import '../../screens/take/take_screen.dart';
+import '../../screens/measure/measure_screen.dart';
 
 class AppRoutes {
   static const String home = '/home';
@@ -15,6 +16,7 @@ class AppRoutes {
   static const String medicine = '/medicine';
   static const String analyst = '/analyst';
   static const String take = '/take';
+  static const String measure = '/measure';
 
   static Map<String, WidgetBuilder> routes = {
     home: (context) => const HomeScreen(),
@@ -24,5 +26,6 @@ class AppRoutes {
     profile: (context) => const ProfileScreen(),
     analyst: (context) => const AnalystScreen(),
     take: (context) => const TakeScreen(),
+    measure: (context) => const MeasureScreen(),
   };
 }
