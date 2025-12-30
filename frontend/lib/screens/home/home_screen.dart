@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/widgets/button_box.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -489,49 +490,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-
-                // ---------------- 4. SATIR (ÖNERİ SİSTEMİ) ----------------
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: boxSize * 2 + 20,
-                      height: 60,
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 248, 248, 248),
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(color: Colors.grey.shade300),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: const [
-                              SizedBox(width: 15),
-                              Icon(Icons.lightbulb, color: Colors.orange),
-                              SizedBox(width: 10),
-                              Text(
-                                "Öneri Sistemi",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(right: 15.0),
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16,
-                              color: Colors.grey,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                // 4.Satır
+                ButtonBox(
+                  icon: Icons.lightbulb_outline,
+                  color: Colors.orange,
+                  title: "Öneri Sistemi",
                 ),
               ],
             ),

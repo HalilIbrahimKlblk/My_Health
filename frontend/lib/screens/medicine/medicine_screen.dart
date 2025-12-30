@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -299,47 +300,12 @@ class MedicineScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.hourglass_empty,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Hatırlatıcı",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            // Hatırlatıcı
+            ButtonBox(
+              icon: Icons.hourglass_empty, 
+              title: "Hatırlatıcı"
             ),
+            // Takvim
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
