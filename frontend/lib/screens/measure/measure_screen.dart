@@ -65,6 +65,14 @@ class MeasureScreen extends StatelessWidget {
                       date: DateTime(2024, 6, 15),
                     ),
                     BannerBox(
+                      color: Colors.orange,
+                      title: "Şeker",
+                      value: "120",
+                      subtitle: "mg/dL",
+                      icon: Icons.cake_outlined,
+                      date: DateTime(2024, 6, 15),
+                    ),
+                    BannerBox(
                       color: Colors.red,
                       value: "72",
                       title: "Nabız",

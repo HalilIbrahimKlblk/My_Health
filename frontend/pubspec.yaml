@@ -23,5 +23,8 @@ flutter:
     - assets/images/health_bg.png
     - assets/images/profile.jpg
     - assets/images/chart.png
+    - assets/images/tansiyon.png
+    - assets/images/nabiz.png
+    - assets/images/sugar.png
 
    
