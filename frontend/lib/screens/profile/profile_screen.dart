@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -200,299 +201,25 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
             // 3. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.person_outline,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Kişisel Bilgiler",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ButtonBox(icon: Icons.person_outline, title: "Kişisel Bilgiler"),
             // 4. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.call_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "İletişim Bilgileri",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ButtonBox(icon: Icons.call_outlined, title: "İletişim Bilgileri"),
             // 5. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.healing_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Sağlık Profili",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ButtonBox(icon: Icons.healing_outlined, title: "Sağlık Profili"),
             // 6. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.security_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Hesap ve Güvenlik",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.security_outlined,
+              title: "Hesap ve Güvenlik",
             ),
             // 7. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.share_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Veri Paylaşımı ve İzinler",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.share_outlined,
+              title: "Veri Paylaşımı ve İzinler",
             ),
             // 8. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.devices_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Cihazlarım",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ButtonBox(icon: Icons.devices_outlined, title: "Cihazlarım"),
             // 9. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.help_outline,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Destek ve Yardım",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            ButtonBox(icon: Icons.help_outline, title: "Destek ve Yardım"),
             const SizedBox(height: 2),
             Center(
               child: Text(

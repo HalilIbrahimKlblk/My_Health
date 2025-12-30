@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 
 class AnalystScreen extends StatelessWidget {
@@ -59,46 +60,10 @@ class AnalystScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             // 1.Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.lightbulb_outline,
-                          size: 30,
-                          color: Colors.orange,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Öneri Sistemi",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.lightbulb_outline,
+              color: Colors.orange,
+              title: "Öneri Sistemi",
             ),
             // 2. Satır
             Row(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 import '../../widgets/banner_box.dart';
-import '../../screens/take/take_screen.dart';
 
 class MeasureScreen extends StatelessWidget {
   const MeasureScreen({super.key});
@@ -115,59 +115,11 @@ class MeasureScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             // 1. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  borderRadius: BorderRadius.circular(5),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const TakeScreen(),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    width: boxSize * 2 + 20,
-                    height: boxSize * 1 / 2.75,
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: colorPalette,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: borderPalette,
-                        width: borderSize,
-                      ),
-                    ),
-                    child: const Row(
-                      children: [
-                        SizedBox(
-                          width: 60,
-                          child: Icon(
-                            Icons.speed,
-                            size: 30,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Expanded(
-                          child: Row(
-                            children: [
-                              Text("Ölçüm Yap", style: TextStyle(fontSize: 20)),
-                              SizedBox(width: 10),
-                              Icon(
-                                Icons.bluetooth_connected,
-                                size: 22.5,
-                                color: Colors.blueGrey,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.speed,
+              title: "Ölçüm Yap",
+              titleIcon: Icons.bluetooth_connected,
+              titleIconColor: Colors.blueGrey,
             ),
             // 2. Satır
             Row(
@@ -284,89 +236,16 @@ class MeasureScreen extends StatelessWidget {
               ],
             ),
             // 3. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.description_outlined,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Ölçüm Notu Ekle",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.description_outlined,
+              title: "Ölçüm Notu Ekle",
             ),
             // 4. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 1 / 2.75,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Row(
-                    children: [
-                      SizedBox(
-                        width: 60,
-                        child: Icon(
-                          Icons.hourglass_top,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Expanded(
-                        child: Text(
-                          "Ölçüm Hatırlatıcı",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 40,
-                        child: Icon(
-                          Icons.keyboard_arrow_right,
-                          size: 30,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+            ButtonBox(
+              icon: Icons.hourglass_top, 
+              title: "Ölçüm Hatırlatıcı"
             ),
+            // 5. Satır - Grafik
             Column(
               children: [
                 const SizedBox(height: 10),
