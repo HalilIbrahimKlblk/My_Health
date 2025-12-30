@@ -538,20 +538,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Ana Sayfa"),
-          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Analiz"),
-          BottomNavigationBarItem(icon: Icon(Icons.speed), label: "Ölçüm"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.medication),
-            label: "İlaçlarım",
-          ),
-        ],
-      ),
     );
   }
 
