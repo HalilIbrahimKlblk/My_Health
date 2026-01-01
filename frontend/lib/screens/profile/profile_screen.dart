@@ -79,7 +79,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          "#245602782",
+                          "ID: 245602782",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                         SizedBox(height: 7.5),

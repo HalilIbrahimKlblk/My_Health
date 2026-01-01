@@ -40,10 +40,7 @@ class ButtonBox extends StatelessWidget {
             ),
             child: Row(
               children: [
-                // Sol Icon
                 SizedBox(width: 60, child: Icon(icon, size: 30, color: color)),
-
-                // Title ve opsiyonel icon
                 Expanded(
                   child: Row(
                     children: [
@@ -65,8 +62,6 @@ class ButtonBox extends StatelessWidget {
                     ],
                   ),
                 ),
-
-                // Sağ Ok
                 const SizedBox(
                   width: 40,
                   child: Icon(
