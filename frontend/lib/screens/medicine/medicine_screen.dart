@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:my_health/widgets/medicine_card.dart';
 
 class MedicineScreen extends StatelessWidget {
   const MedicineScreen({super.key});
@@ -242,69 +243,23 @@ class MedicineScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 0.85,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "İlaç Şablonu",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            // İlaç Şablonu
+            MedicineCard(
+              image: const AssetImage('assets/images/parol.jpg'),
+              title: "Parol 500 mg",
+              subtitle: "Ağrı Kesici",
+              repeat: "Sabah - Öğlen - Akşam",
+              importance: "Orta",
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize * 2 + 20,
-                  height: boxSize * 0.85,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "İlaç Şablonu",
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            MedicineCard(
+              image: const AssetImage('assets/images/aferin.png'),
+              title: "Aferin 500 mg",
+              subtitle: "Soğuk Algınlığı",
+              repeat: "Sabah - Akşam",
+              importance: "Önemli",
             ),
             // Hatırlatıcı
-            ButtonBox(
-              icon: Icons.hourglass_empty, 
-              title: "Hatırlatıcı"
-            ),
+            ButtonBox(icon: Icons.hourglass_empty, title: "Hatırlatıcı"),
             // Takvim
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
