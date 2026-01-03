@@ -70,9 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: Colors.white.withOpacity(
-                        0.2,
-                      ), // Yarı saydam arka plan
+                      fillColor: Color.fromRGBO(255, 255, 255, 0.2), // Yarı saydam arka plan
                       hintText: "E-Mailinizi giriniz",
                       hintStyle: TextStyle(color: Colors.grey[400]),
                       border: OutlineInputBorder(
@@ -96,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Color.fromRGBO(255, 255, 255, 0.2),
                       hintText: "Şifrenizi giriniz",
                       hintStyle: TextStyle(color: Colors.grey[400]),
                       border: OutlineInputBorder(

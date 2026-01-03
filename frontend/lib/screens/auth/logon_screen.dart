@@ -211,7 +211,12 @@ class _LogonScreenState extends State<LogonScreen> {
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             filled: true,
-            fillColor: Colors.white.withOpacity(0.3), // Yarı saydam arka plan
+            fillColor: Color.fromRGBO(
+              255,
+              255,
+              255,
+              0.2,
+            ), // Yarı saydam arka plan
             hintText: hint,
             hintStyle: TextStyle(color: Colors.grey[300]),
             contentPadding: const EdgeInsets.symmetric(
