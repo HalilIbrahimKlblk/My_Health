@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
 import '../../widgets/banner_box.dart';
+import '../../screens/take/take_screen.dart';
 
 class MeasureScreen extends StatelessWidget {
   const MeasureScreen({super.key});
@@ -120,6 +121,12 @@ class MeasureScreen extends StatelessWidget {
               title: "Ölçüm Yap",
               titleIcon: Icons.bluetooth_connected,
               titleIconColor: Colors.blueGrey,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TakeScreen()),
+                );
+              },
             ),
             // 2. Satır
             Row(
@@ -241,10 +248,7 @@ class MeasureScreen extends StatelessWidget {
               title: "Ölçüm Notu Ekle",
             ),
             // 4. Satır
-            ButtonBox(
-              icon: Icons.hourglass_top, 
-              title: "Ölçüm Hatırlatıcı"
-            ),
+            ButtonBox(icon: Icons.hourglass_top, title: "Ölçüm Hatırlatıcı"),
             // 5. Satır - Grafik
             Column(
               children: [
