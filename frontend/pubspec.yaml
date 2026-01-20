@@ -28,5 +28,5 @@ flutter:
     - assets/images/sugar.png
     - assets/images/parol.jpg
     - assets/images/aferin.png
-
+    - lib/data/user.json
    

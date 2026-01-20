@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_health/widgets/button_box.dart';
 import '../../widgets/notification_icon.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -15,224 +17,265 @@ class ProfileScreen extends StatelessWidget {
     final borderPalette = Colors.grey.shade400;
 
     return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (context, inner) {
-          return [
-            SliverAppBar(
-              centerTitle: true,
-              floating: false,
-              snap: false,
-              pinned: false,
-              elevation: 2,
-              title: const Padding(
-                padding: EdgeInsets.only(top: 15.0),
-                child: Text(
-                  "Hesabım",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              actions: const [
-                Padding(
-                  padding: EdgeInsets.only(right: 16.0, top: 15.0),
-                  child: NotificationIcon(),
-                ),
-              ],
-            ),
-          ];
-        },
+      body: FutureBuilder(
+        future: rootBundle.loadString('lib/data/user.json'),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-        body: ListView(
-          padding: const EdgeInsets.only(top: 20, bottom: 15),
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                // 1. Satır
-                Center(
-                  child: Container(
-                    width: screenWidth * 0.85,
-                    height: boxSize * 1.6,
-                    margin: const EdgeInsets.only(top: 120, bottom: 10),
-                    decoration: BoxDecoration(
-                      color: colorPalette,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: borderPalette,
-                        width: borderSize,
+          final data = jsonDecode(snapshot.data as String);
+
+          String name = data["name"];
+          String surname = data["surname"];
+          int id = data["id"];
+          String imagePath = data["profileImage"];
+          int age = data["age"];
+          int length = data["length"];
+          int weight = data["weight"];
+
+          return NestedScrollView(
+            headerSliverBuilder: (context, inner) {
+              return [
+                SliverAppBar(
+                  centerTitle: true,
+                  floating: false,
+                  snap: false,
+                  pinned: false,
+                  elevation: 2,
+                  backgroundColor: Colors.white,
+                  title: const Padding(
+                    padding: EdgeInsets.only(top: 15.0),
+                    child: Text(
+                      "Hesabım",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.black,
                       ),
                     ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 100),
-                        Text(
-                          "Halil İbrahim Kalabalık",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                  ),
+                  actions: const [
+                    Padding(
+                      padding: EdgeInsets.only(right: 16.0, top: 15.0),
+                      child: NotificationIcon(),
+                    ),
+                  ],
+                ),
+              ];
+            },
+
+            body: ListView(
+              padding: const EdgeInsets.only(top: 20, bottom: 15),
+              children: [
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    // 1. Satır
+                    Center(
+                      child: Container(
+                        width: screenWidth * 0.85,
+                        height: boxSize * 1.6,
+                        margin: const EdgeInsets.only(top: 120, bottom: 10),
+                        decoration: BoxDecoration(
+                          color: colorPalette,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: borderPalette,
+                            width: borderSize,
                           ),
                         ),
-                        SizedBox(height: 5),
-                        Text(
-                          "ID: 245602782",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 100),
+                            Text(
+                              "$name $surname",
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              "ID: $id",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                              ),
+                            ),
+                            SizedBox(height: 7.5),
+                            Icon(
+                              Icons.qr_code_2_rounded,
+                              size: 70,
+                              color: Colors.black,
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 7.5),
-                        Icon(
-                          Icons.qr_code_2_rounded,
-                          size: 70,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 10,
-                  left: screenWidth / 2 - (boxSize * 0.6),
-                  child: Container(
-                    width: boxSize * 1.2,
-                    height: boxSize * 1.2,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/profile.jpg"),
-                        fit: BoxFit.cover,
                       ),
-                      border: Border.all(color: borderPalette, width: 1.5),
+                    ),
+                    Positioned(
+                      top: 10,
+                      left: screenWidth / 2 - (boxSize * 0.6),
+                      child: Container(
+                        width: boxSize * 1.2,
+                        height: boxSize * 1.2,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: AssetImage(imagePath),
+                            fit: BoxFit.cover,
+                          ),
+                          border: Border.all(color: borderPalette, width: 1.5),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // 2. Satır
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: boxSize / 1.6,
+                      height: boxSize / 1.6,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: colorPalette,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: borderPalette,
+                          width: borderSize,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Yaş",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            age.toString(),
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: boxSize / 1.6,
+                      height: boxSize / 1.6,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: colorPalette,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: borderPalette,
+                          width: borderSize,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Boy",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            length.toString(),
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: boxSize / 1.6,
+                      height: boxSize / 1.6,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: colorPalette,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: borderPalette,
+                          width: borderSize,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Kilo",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            weight.toString(),
+                            style: TextStyle(fontSize: 22, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                // 3. Satır
+                ButtonBox(
+                  icon: Icons.person_outline,
+                  title: "Kişisel Bilgiler",
+                ),
+                // 4. Satır
+                ButtonBox(
+                  icon: Icons.call_outlined,
+                  title: "İletişim Bilgileri",
+                ),
+                // 5. Satır
+                ButtonBox(
+                  icon: Icons.healing_outlined,
+                  title: "Sağlık Profili",
+                ),
+                // 6. Satır
+                ButtonBox(
+                  icon: Icons.security_outlined,
+                  title: "Hesap ve Güvenlik",
+                ),
+                // 7. Satır
+                ButtonBox(
+                  icon: Icons.share_outlined,
+                  title: "Veri Paylaşımı ve İzinler",
+                ),
+                // 8. Satır
+                ButtonBox(icon: Icons.devices_outlined, title: "Cihazlarım"),
+                // 9. Satır
+                ButtonBox(icon: Icons.help_outline, title: "Destek ve Yardım"),
+                const SizedBox(height: 2),
+                Center(
+                  child: Text(
+                    "Uygulama Sürümü: 1.1.0",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 100, 100, 100),
                     ),
                   ),
                 ),
               ],
             ),
-            // 2. Satır
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: boxSize / 1.6,
-                  height: boxSize / 1.6,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Yaş",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "21",
-                        style: TextStyle(fontSize: 22, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: boxSize / 1.6,
-                  height: boxSize / 1.6,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Boy",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "182",
-                        style: TextStyle(fontSize: 22, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: boxSize / 1.6,
-                  height: boxSize / 1.6,
-                  margin: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: colorPalette,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: borderPalette, width: borderSize),
-                  ),
-                  child: const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Kilo",
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      Text(
-                        "91",
-                        style: TextStyle(fontSize: 22, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            // 3. Satır
-            ButtonBox(icon: Icons.person_outline, title: "Kişisel Bilgiler"),
-            // 4. Satır
-            ButtonBox(icon: Icons.call_outlined, title: "İletişim Bilgileri"),
-            // 5. Satır
-            ButtonBox(icon: Icons.healing_outlined, title: "Sağlık Profili"),
-            // 6. Satır
-            ButtonBox(
-              icon: Icons.security_outlined,
-              title: "Hesap ve Güvenlik",
-            ),
-            // 7. Satır
-            ButtonBox(
-              icon: Icons.share_outlined,
-              title: "Veri Paylaşımı ve İzinler",
-            ),
-            // 8. Satır
-            ButtonBox(icon: Icons.devices_outlined, title: "Cihazlarım"),
-            // 9. Satır
-            ButtonBox(icon: Icons.help_outline, title: "Destek ve Yardım"),
-            const SizedBox(height: 2),
-            Center(
-              child: Text(
-                "Uygulama Sürümü: 1.1.0",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 100, 100, 100),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+          ); // NestedScrollView kapanışı
+        }, // FutureBuilder builder kapanışı
+      ), // FutureBuilder kapanışı
+    ); // Scaffold kapanışı
+  } // <-- BU PARANTEZ SENDE YOK!
 }
