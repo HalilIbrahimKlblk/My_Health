@@ -1,4 +1,4 @@
-package com.myhealth.my_health.exception;
+package com.my_health.exception;
 
 public class ResourceNotFoundException {
 
