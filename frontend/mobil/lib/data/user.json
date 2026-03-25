@@ -3,7 +3,8 @@
     "name": "Halil İbrahim",
     "surname": "Kalabalık",
     "age": 21,
-    "length": 182,
+    "length": 183,
     "weight": 91,
+    "gender": "E",
     "profileImage": "assets/images/profile.jpg"
 }
