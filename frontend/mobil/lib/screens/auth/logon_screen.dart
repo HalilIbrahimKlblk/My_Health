@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:my_health/widgets/input_line.dart';
+
 
 class LogonScreen extends StatefulWidget {
   const LogonScreen({super.key});
@@ -61,22 +63,66 @@ class _LogonScreenState extends State<LogonScreen> {
                   const SizedBox(height: 20),
 
                   // Ad Alanı
-                  InputLine(title: "Ad", subtitle: "Adınızı giriniz"),
+                  InputLine(
+                    title: "Ad",
+                    subtitle: "Adınızı giriniz",
+                    icon: Icons.person,
+                    inputType: TextInputType.name,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(
+                        RegExp(r"[a-zA-ZçÇğĞıİöÖşŞüÜ\s]"),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 15),
                   // Soyad Alanı
-                  InputLine(title: "Soyad", subtitle: "Soyadınızı giriniz"),
+                  InputLine(
+                    title: "Soyad",
+                    subtitle: "Soyadınızı giriniz",
+                    icon: Icons.person,
+                    inputType: TextInputType.name,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(
+                        RegExp(r"[a-zA-ZçÇğĞıİöÖşŞüÜ\s]"),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 15),
                   // Telefon Alanı
-                  InputLine(title: "Telefon", subtitle: "Telefonunuzu giriniz"),
+                  InputLine(
+                    title: "Telefon",
+                    subtitle: "0(5xx) xxx xx xx",
+                    icon: Icons.phone,
+                    inputType: TextInputType.phone,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(11),
+                    ],
+                  ),
                   const SizedBox(height: 15),
                   // Mail Alanı
-                  InputLine(title: "E-Mail", subtitle: "E-Mailinizi giriniz"),
+                  InputLine(
+                    title: "E-Mail",
+                    subtitle: "E-Mailinizi giriniz",
+                    icon: Icons.mail,
+                    inputType: TextInputType.emailAddress,
+                  ),
                   const SizedBox(height: 15),
                   // Şifre Alanı
-                  InputLine(title: "Şifre", subtitle: "Şifrenizi giriniz"),
+                  InputLine(
+                    title: "Şifre",
+                    subtitle: "Şifrenizi giriniz",
+                    icon: Icons.key,
+                    isObscure: true,
+                  ),
                   const SizedBox(height: 15),
-                  // Şifre Alanı
-                  InputLine(title: "Şifre Tekrar", subtitle: "Şifrenizi giriniz"),
+                  // Şifre Tekrar
+                  InputLine(
+                    title: "Şifre Tekrar",
+                    subtitle: "Şifrenizi giriniz",
+                    icon: Icons.lock,
+                    isObscure: true,
+                  ),
                   const SizedBox(height: 20),
                   // Kvk Sözleşmesi
                   Row(

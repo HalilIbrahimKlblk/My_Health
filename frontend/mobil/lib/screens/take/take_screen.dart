@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math; 
-import '../analyst/analyst_screen.dart';
+import 'package:my_health/screens/result/result_screen.dart';
+import 'dart:math' as math;
 
 class TakeScreen extends StatefulWidget {
   const TakeScreen({super.key});
@@ -9,7 +9,8 @@ class TakeScreen extends StatefulWidget {
   State<TakeScreen> createState() => _TakeScreenState();
 }
 
-class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateMixin {
+class _TakeScreenState extends State<TakeScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -23,7 +24,7 @@ class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateM
 
   @override
   void dispose() {
-    _controller.dispose(); 
+    _controller.dispose();
     super.dispose();
   }
 
@@ -44,7 +45,7 @@ class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateM
               ),
             ),
           ),
-          
+
           Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -55,10 +56,14 @@ class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateM
                     return Row(
                       mainAxisSize: MainAxisSize.min,
                       children: List.generate(5, (index) {
-                        double offsetY = math.sin(_controller.value * 2 * math.pi + (index * 0.8)) * 5;
-                        
+                        double offsetY =
+                            math.sin(
+                              _controller.value * 2 * math.pi + (index * 0.8),
+                            ) *
+                            5;
+
                         return Transform.translate(
-                          offset: Offset(0, offsetY), 
+                          offset: Offset(0, offsetY),
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4),
                             child: Text("●", style: TextStyle(fontSize: 18)),
@@ -68,7 +73,7 @@ class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateM
                     );
                   },
                 ),
-                
+
                 const SizedBox(height: 16),
 
                 const Text(
@@ -99,12 +104,16 @@ class _TakeScreenState extends State<TakeScreen> with SingleTickerProviderStateM
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AnalystScreen(),
+                      builder: (context) =>
+                        ResultScreen(systolic: 110, diastolic: 70),
                     ),
                   );
                 },
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 12.0),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 12.0,
+                  ),
                   child: Text("Tamam", style: TextStyle(fontSize: 20)),
                 ),
               ),

@@ -64,10 +64,20 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 50),
                   // Mail Alanı
-                  InputLine(title: "E-Mail", subtitle: "E-Mailinizi giriniz"),
+                  InputLine(
+                    title: "E-Mail",
+                    subtitle: "E-Mailinizi giriniz",
+                    icon: Icons.email,
+                    inputType: TextInputType.emailAddress,
+                  ),
                   const SizedBox(height: 20),
                   // Şifre Alanı
-                  InputLine(title: "Şifre", subtitle: "Şifrenizi giriniz"),
+                  InputLine(
+                    title: "Şifre",
+                    subtitle: "Şifrenizi giriniz",
+                    icon: Icons.key,
+                    isObscure: true,
+                  ),
                   const SizedBox(height: 10),
 
                   // Beni Hatırla-Şifremi Unuttum
