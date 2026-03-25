@@ -1,4 +1,4 @@
-package com.myhealth.my_health.starter;
+package com.my_health.starter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
