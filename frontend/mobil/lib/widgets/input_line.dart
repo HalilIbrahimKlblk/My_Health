@@ -8,6 +8,7 @@ class InputLine extends StatelessWidget {
   final bool isObscure;
   final TextInputType inputType;
   final List<TextInputFormatter>? inputFormatters;
+  final TextEditingController? controller;
 
   const InputLine({
     super.key,
@@ -17,6 +18,7 @@ class InputLine extends StatelessWidget {
     this.isObscure = false,
     this.inputType = TextInputType.text,
     this.inputFormatters,
+    this.controller,
   });
 
   @override
@@ -28,6 +30,7 @@ class InputLine extends StatelessWidget {
         Text(title, style: const TextStyle(color: Colors.white)),
         const SizedBox(height: 8),
         TextField(
+          controller: controller,
           obscureText: isObscure, // Şifre alanı
           keyboardType: inputType, // Veri türü
           inputFormatters: inputFormatters,
