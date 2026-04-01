@@ -15,9 +15,7 @@ class ApiService {
     try {
       final response = await http.post(
         Uri.parse(url),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: {"Content-Type": "application/json"},
         body: jsonEncode({
           "name": name,
           "surname": surname,
@@ -29,6 +27,36 @@ class ApiService {
       if (response.statusCode == 200 || response.statusCode == 201) {
         // ignore: avoid_print
         print("API Yanıtı: Kayıt Başarılı. ${response.body}");
+        return true;
+      } else {
+        // ignore: avoid_print
+        print("API Hatası: Sunucu ${response.statusCode} kodu döndürdü.");
+        return false;
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print("API Bağlantı Hatası (Catch): $e");
+      return false;
+    }
+  }
+
+  Future<bool> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    final String url = "$baseUrl/user/login";
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({"email": email, "password": password}),
+      );
+
+      // Backend'in başarılı girişte 200 OK döndüğünü varsayıyoruz
+      if (response.statusCode == 200) {
+        // ignore: avoid_print
+        print("API Yanıtı: Giriş Başarılı. ${response.body}");
         return true;
       } else {
         // ignore: avoid_print

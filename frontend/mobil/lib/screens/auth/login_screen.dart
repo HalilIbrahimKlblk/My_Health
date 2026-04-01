@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_health/widgets/input_line.dart';
+import 'package:my_health/services/api_service.dart'; // ApiService'i import etmeyi unutma
 import '../../core/routes/app_routes.dart';
 import '../main_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,6 +14,19 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isRememberMe = false; // Beni Hatırla
+  bool isLoading = false; // Yüklenme durumu için
+
+  // Controller'lar eklendi
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  // SnackBar göstermek için yardımcı metot
+  void _showSnackBar(BuildContext context, String message) {
+    if (!context.mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Üst Kısım (mavi)
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
@@ -38,13 +51,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 20),
-
-                  // Logo-Başlık
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.monitor_heart,
                           color: Colors.redAccent,
                           size: 40,
@@ -63,24 +74,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  // Mail Alanı
+                  // Mail Alanı Controller ile güncellendi
                   InputLine(
                     title: "E-Mail",
                     subtitle: "E-Mailinizi giriniz",
                     icon: Icons.email,
                     inputType: TextInputType.emailAddress,
+                    controller: emailController,
                   ),
                   const SizedBox(height: 20),
-                  // Şifre Alanı
+                  // Şifre Alanı Controller ile güncellendi
                   InputLine(
                     title: "Şifre",
                     subtitle: "Şifrenizi giriniz",
                     icon: Icons.key,
                     isObscure: true,
+                    controller: passwordController,
                   ),
                   const SizedBox(height: 10),
 
-                  // Beni Hatırla-Şifremi Unuttum
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -123,17 +135,47 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Giriş Yap
+                  // Giriş Yap Butonu Güncellendi
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => const MainPage()),
-                        );
-                      },
+                      onPressed: isLoading
+                          ? null // Yüklenirken butonu devre dışı bırak
+                          : () async {
+                              if (emailController.text.trim().isEmpty ||
+                                  passwordController.text.trim().isEmpty) {
+                                _showSnackBar(context, "Lütfen e-posta ve şifrenizi girin!");
+                                return;
+                              }
+
+                              setState(() => isLoading = true);
+
+                              try {
+                                ApiService apiService = ApiService();
+                                bool isSuccess = await apiService.loginUser(
+                                  email: emailController.text.trim(),
+                                  password: passwordController.text.trim(),
+                                );
+
+                                if (!context.mounted) return;
+                                setState(() => isLoading = false);
+
+                                if (isSuccess) {
+                                  _showSnackBar(context, "Giriş Başarılı!");
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(builder: (_) => const MainPage()),
+                                  );
+                                } else {
+                                  _showSnackBar(context, "E-posta veya şifre hatalı!");
+                                }
+                              } catch (e) {
+                                if (!context.mounted) return;
+                                setState(() => isLoading = false);
+                                _showSnackBar(context, "Hata oluştu: $e");
+                              }
+                            },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: primaryColor,
@@ -141,24 +183,31 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(30),
                         ),
                       ),
-                      child: const Text(
-                        "Giriş",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: isLoading
+                          ? SizedBox(
+                              height: 24,
+                              width: 24,
+                              child: CircularProgressIndicator(
+                                color: primaryColor,
+                                strokeWidth: 3,
+                              ),
+                            )
+                          : const Text(
+                              "Giriş",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                     ),
                   ),
                   const SizedBox(height: 15),
 
-                  // Kayıt Ol
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, AppRoutes.logon),
+                      onPressed: () => Navigator.pushNamed(context, AppRoutes.logon),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF0F1430),
                         foregroundColor: Colors.white,
@@ -177,8 +226,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 40),
-
-            // Sosyal Medya İkonları
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -218,7 +265,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 40),
             Text(
-              "Copyright 2025 © Final Project",
+              "Copyright 2026 © Final Project", // Yılı 2026 olarak LogonScreen'e eşitledim :)
               style: TextStyle(color: Colors.grey[600], fontSize: 12),
             ),
             const SizedBox(height: 20),
@@ -228,7 +275,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Sosyal Medya Butonu
   Widget buildSocialIcon({
     required Color bgColor,
     required String imagePath,
