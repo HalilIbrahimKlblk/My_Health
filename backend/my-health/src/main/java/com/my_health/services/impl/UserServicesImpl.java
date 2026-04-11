@@ -39,7 +39,11 @@ public class UserServicesImpl implements IUserServices{
 		String hashedPassword = passwordEncoder.encode(rawPassword);
 		user.setPassword(hashedPassword);
 		
-		user.setRole(Role.USER);
+		if (dtoUser.getRole() != null && dtoUser.getRole() == Role.ADMIN) {
+		    throw new RuntimeException("Admin rolü atanamaz!");
+		}
+
+		user.setRole(dtoUser.getRole() != null ? dtoUser.getRole() : Role.USER);
 		
 		user.setPatientCode(generateUniquePatientCode());
 		
@@ -64,10 +68,6 @@ public class UserServicesImpl implements IUserServices{
 		
 		if (!passwordEncoder.matches(dtoUserLogin.getPassword(), user.getPassword())) {
 			throw new InvalidPasswordException("Şifre yanlış");
-        }
-		
-		if (!user.getRole().name().equals("USER")) {
-            throw new RuntimeException("Bu kullanıcı giriş yapamaz");
         }
 		
 		DtoUserHome response = new DtoUserHome();

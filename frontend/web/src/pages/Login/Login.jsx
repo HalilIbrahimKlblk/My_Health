@@ -4,20 +4,60 @@ import "./Login.css";
 
 const Login = () => {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (username === "admin" && password === "1234") {
+    try {
+      const response = await fetch("http://localhost:8080/my-health/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
 
-      sessionStorage.setItem("isAdmin", "true");
-      navigate("/Admin");
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
 
-    } else {
+      const data = await response.json();
+
+      // Backend'den gelen veriler
+      const role = data.role;
+
+      // Session'a kaydet
+      sessionStorage.setItem("role", role);
+
+      // Role göre yönlendirme
+      if (role === "ADMIN") {
+        navigate("/Admin");
+      } 
+      else if (role === "DOCTOR") {
+        navigate("/Doctor");
+      } 
+      else if (role === "PHARMACIST") {
+        navigate("/Pharmacist");
+      }
+      else if (role === "ADMIN_HOSPITAL") {
+        navigate("/AdminHospital");
+      }
+      else if (role === "ADMIN_PHARMACY") {
+        navigate("/AdminPharmacy");
+      }
+      else {
+        alert("Bu paneli kullanma yetkiniz yok!");
+      }
+
+    } catch (error) {
+      console.error(error);
       alert("Kullanıcı adı veya şifre hatalı");
     }
   };
@@ -27,20 +67,22 @@ const Login = () => {
       <div className="login-card">
 
         <img
-          src="../../public/img/admin.png"
+          src="/img/admin.png"
+          alt="admin"
           className="admin-icon"
         />
 
-        <h2>Admin Paneli</h2>
+        <h2>Admin Paneli Giriş</h2>
 
         <form onSubmit={handleLogin}>
+          
           <div className="input-group">
-            <label>Kullanıcı Adı</label>
+            <label>Email</label>
             <input
-              type="text"
-              placeholder="Kullanıcı adınızı giriniz"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="email"
+              placeholder="Email giriniz"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -59,6 +101,7 @@ const Login = () => {
           <button type="submit" className="login-btn">
             Giriş Yap
           </button>
+
         </form>
       </div>
     </div>

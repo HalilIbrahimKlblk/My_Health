@@ -26,7 +26,7 @@ const Navbar = () => {
             e.preventDefault();
             document.getElementById("about")
               .scrollIntoView({ behavior: "smooth" });
-              setMenuOpen(false);
+            setMenuOpen(false);
           }}
         >
           Hakkımızda
@@ -38,7 +38,7 @@ const Navbar = () => {
             e.preventDefault();
             document.getElementById("app")
               .scrollIntoView({ behavior: "smooth" });
-              setMenuOpen(false);
+            setMenuOpen(false);
           }}
         >
           Mobil App
@@ -50,13 +50,13 @@ const Navbar = () => {
             e.preventDefault();
             document.getElementById("contact")
               .scrollIntoView({ behavior: "smooth" });
-              setMenuOpen(false);
+            setMenuOpen(false);
           }}
         >
           İletişim
         </a>
         <a
-          href="/login"
+          href="/Login"
           className='contact-btn'
         >
           Giriş Yap / Kayıt Ol

@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import NotFound from './pages/NotFound/NotFound';
 import Admin from './pages/Admin/Admin';
+import Doctor from './pages/Doctor/Doctor';
+import AdminHospital from './pages/AdminHospital/AdminHospital';
+import Pharmacist from './pages/Pharmacist/Pharmacist';
+import AdminPharmacist from './pages/AdminPharmacist/AdminPharmacist';
 import MainLayout from './layouts/MainLayout';
 import EmptyLayout from './layouts/EmptyLayout';
 import Login from './pages/Login/Login';
@@ -18,6 +22,10 @@ const App = () => {
           {/* 404 sayfası - Navbar ve Footer yok */}
           <Route path="*" element={<EmptyLayout><NotFound /></EmptyLayout>} />
           <Route path="/Admin" element={<EmptyLayout><Admin /></EmptyLayout>} />
+          <Route path="/Doctor" element={<EmptyLayout><Doctor /></EmptyLayout>} />
+          <Route path="/AdminHospital" element={<EmptyLayout><AdminHospital /></EmptyLayout>} />
+          <Route path='/Pharmacist' element={<EmptyLayout><Pharmacist /></EmptyLayout>} />
+          <Route path='/AdminPharmacist' element={<EmptyLayout><AdminPharmacist /></EmptyLayout>} />
           <Route path="/Login" element={<EmptyLayout><Login /></EmptyLayout>} />
         </Routes>
       </BrowserRouter>
