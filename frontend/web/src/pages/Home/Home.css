@@ -1,0 +1,426 @@
+/*Genel Başlangıç*/
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --accent-color: #475569;
+  --primary-color: #04AA6D;
+  --secondary-color: #059669;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --transition: all 0.3s ease;
+  --container-width: 1200px;
+  --header-height: 80px;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/*Genel Bitiş*/
+
+/*Hero Başlangıç*/
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--header-height);
+  position: relative;
+  overflow: hidden;
+  margin-top: -80px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #45ffc4 0%, rgba(145, 20, 20, 0) 70%);
+  z-index: -1;
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  color: var(--bg-dark);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0rem;
+}
+
+
+section {
+  padding: 5rem 0;
+}
+
+/* --- Mobil Görünüm --- */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 4.2rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/*Hero Bitiş*/
+
+/*Title Başlangıç*/
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: var(--bg-dark);
+  scroll-margin-top: 90px;
+}
+
+.section-title span {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.section-title span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 4px;
+  background: var(--primary-color);
+  border-radius: 1px;
+}
+
+/*Title Bitiş*/
+
+/*Hakkımda Başlangıç*/
+.about-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 700px;
+  margin: 15px auto 0;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+.about-right {
+  flex: 1;
+}
+
+.about-text {
+  margin-bottom: 20px;
+}
+
+.about-name {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #111827, #374151);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.about-right p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Mobil Uyumluluk (Responsive) */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    /* Mobilde alt alta geç */
+    text-align: center;
+    /* Metni ortala */
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .about-right {
+    width: 100%;
+    /* Tam genişlik kullan */
+  }
+}
+
+.cv-box {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.cv-btn {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #04AA6D, #059669);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 20px rgba(4, 170, 109, 0.35);
+  transition: all 0.3s ease;
+}
+
+.cv-btn:hover {
+  box-shadow: 0 15px 30px rgba(4, 170, 109, 0.45);
+  background: linear-gradient(135deg, #059669, #047857);
+  color: white;
+  text-decoration: none;
+}
+
+.cv-btn:active {
+  transform: scale(0.98);
+}
+
+/*Eğitim-Beceri Başlangıç*/
+.about-flex-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
+  margin-top: 30px;
+}
+
+.about-flex-item {
+  width: 48.5%;
+  gap: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+}
+
+/* Mobil Uyumluluk (Responsive) */
+@media (max-width: 768px) {
+  .about-flex-content {
+    display: block;
+  }
+
+  .about-flex-item {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+}
+
+.about-h2 {
+  font-size: 32px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #111827, #374151);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding: 20px;
+  margin-left: 12.5px;
+}
+
+/*Eğitim-Beceri Bitiş*/
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.info-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 28px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #04AA6D, #059669);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover::before {
+  transform: scaleX(1);
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  border-color: rgba(52, 152, 219, 0.2);
+}
+
+.info-card i {
+  font-size: 2.4rem;
+  color: #2c3e50;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.info-card:hover i {
+  color: #04AA6D;
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.info-card h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  transition: color 0.3s ease;
+}
+
+.info-card:hover h4 {
+  color: #059669;
+}
+
+.info-card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.info-card h4 {
+  color: #2c3e50;
+}
+
+.info-card a:hover h4 {
+  color: #059669;
+}
+
+@media (min-width: 769px) and (max-width: 1025px) {
+  .info-cards {
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-cards {
+    margin-bottom: 20px;
+  }
+
+  .info-card {
+    width: 85%;
+    margin-left: 7.5%;
+    height: 125px;
+    padding: 10px;
+    margin-bottom: -5px;
+  }
+
+  .info-card i {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-h1 {
+    font-size: 36px;
+    margin-top: 20px;
+  }
+
+  .about-header {
+    margin-bottom: 10px;
+  }
+
+  .about-header p {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}
+/*Hakkımda Bitiş*/
