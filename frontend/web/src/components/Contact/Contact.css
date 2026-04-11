@@ -1,0 +1,94 @@
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fbfdff;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #e1e1e1;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: black;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background: #f6f6f6;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    color: rgb(42, 42, 42);
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #04AA6D;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: var(--primary-color);
+  color: var(--bg-dark);
+  font-weight: 600;
+  border-radius: 50px;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--secondary-color);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  margin-left: 1rem;
+}
+
+.btn-outline:hover {
+  background: #fff;
+}
+
+/* --- Mobil Görünüm --- */
+@media (max-width: 768px) {
+
+    .contact-container {
+        margin: 20px -5px;        
+        padding: 1.5rem;          
+        border-radius: 12px;  
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.65rem;
+        font-size: 0.9rem;
+    }
+
+    .form-group textarea {
+        min-height: 120px;
+    }
+}

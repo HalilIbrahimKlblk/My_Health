@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #0f172a;
+    --accent-color: #475569;
+    --nav-height: 80px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    padding: 0 2rem;
+    background-color: var(--bg-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left img {
+    height: 65px;
+    display: block;
+    transition: transform 0.3s;
+    margin-left: -10px;
+}
+
+.navbar-left img:hover {
+    transform: scale(1.02);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navbar-right a:hover {
+    color: var(--accent-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.4s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-right a.contact-btn {
+    padding: 8px 16px;
+    background-color: #ef0000;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-right a.contact-btn:hover {
+    background-color: #c60000;
+    transform: translateY(-2px);
+}
+
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.navbar-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Animasyonu */
+.navbar-toggle.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.navbar-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Mobil Görünüm --- */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 1.5rem;
+        position: sticky;
+    }
+
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-left img {
+        height: 55px;
+    }
+
+    .navbar-right {
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        padding: 0.7rem 0;
+        gap: 1.8rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-right.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-right a {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+}
